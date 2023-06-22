@@ -11,3 +11,130 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/*  ----------------------------header css ---------------------------*/
+nav{
+  width: 100vw;
+  height: 70px;
+  color: white;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px;
+  position: sticky;
+  top: 0px;
+  z-index: 200;
+  border-bottom: solid rgba(128, 128, 128, 0.4) 1px;
+
+}
+#logo i{
+  font-size: 30px;
+  margin: -5px 0px 0px -10px;
+  color: rgb(18, 18, 96);
+
+}
+
+#logo a{
+  text-decoration: none;
+  color: black;
+}
+#logo a h1{
+  display: inline-block;
+  padding-right: 10px;
+ font-size: 30px;
+}
+nav hr{
+ border: 1px solid grey;
+ width: 100vw;
+}
+ /* ----------------------------Home page CSS------------------------*/
+#home-page 
+{
+  margin:  auto;
+  padding:30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+#content {
+  width: 50%;
+  margin-right: 50px;
+
+  margin-top: -50px;
+  padding: 40px 10px 0px 10px;
+ text-align: left;
+}
+
+#content p{
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+#content #create{
+  /* border-radius: 20px; */
+  width: auto;
+  height: 30px;
+  padding: 5px 10px;
+}
+
+#image{
+  width: 50%;
+}
+#image img{
+  width: 500px;
+  height: 500px;
+}
+
+/* --------------------- heading pafge css --------------------*/
+.heading-page, .exp-page ,.edu-page{
+  width: 60%;
+  height: auto;
+  margin: 30px auto;
+  padding: 10px 20px;
+  
+}
+
+.heading-page h3, .exp-page h3 , .edu-page h3{
+  text-align: left;
+  font-weight: lighter;
+  margin-bottom: 40px;
+
+}
+.heading-info ,.exp-info , .edu-info {
+  width: 90%;
+  margin: 10px auto;
+  text-align: left;
+  
+}
+
+form
+{ 
+  padding:10px;
+  border: rgba(128, 128, 128, 0.507) solid 0.5px;
+}
+/* ----------------options------------- */
+#options{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 200px;
+ 
+}
+
+
+.view-resume a{
+  text-align: center;
+  border: 1px rgba(11, 228, 26, 0.879) solid;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  width: auto;
+  height: 35px;
+  padding: 5px 10px;
+  
+}
+.view-resume a:hover{
+  background-color: rgba(11, 228, 26, 0.879);
+  
+}
+ 

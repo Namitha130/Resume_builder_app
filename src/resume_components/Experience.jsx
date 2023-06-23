@@ -1,5 +1,6 @@
 import { useEffect, useRef,useState } from "react";
 import { Link } from "react-router-dom";
+import ToasterUi from 'toaster-ui';
 const Experience = () => {
 
     let designation = useRef();
@@ -10,10 +11,11 @@ const Experience = () => {
     let jobEnd = useRef();
     let jobDescription= useRef();
 
- 
     let [userDetails ,setUserDetails] = useState({});
     let [inputField , setInputField] = useState([{designation :'' , cName : '' ,jCity:'', jCountry:'', sd:'',ed:'' ,desc:''}])
-   
+    
+    const toaster = new ToasterUi();
+     
     useEffect( ()=>{
         fetch("http://localhost:1000/information")
         .then((res)=>{
@@ -29,7 +31,7 @@ const Experience = () => {
     let handleAddExperience = (e) =>{
         e.preventDefault()
         //  it is used to prevent auto reload
-        
+        toaster.addToast("Previous work details added successfully");
         let expDetails = {
             designation : designation.current.value,
             companyName : companyName.current.value,
@@ -40,6 +42,12 @@ const Experience = () => {
             jobDescription: jobDescription.current.value
         }
         console.log(expDetails);
+
+        let data = JSON.parse(localStorage.getItem("userdetails"))
+        console.log(data.experiences);
+        
+        let experienceArr = data.experiences;
+        experienceArr.push(expDetails)
         let updateExpData = {
             ...userDetails , experiences: [...userDetails.experiences , expDetails]
         }
@@ -51,7 +59,8 @@ const Experience = () => {
           }
           fetch("http://localhost:1000/information/" + userDetails ,config)
           .then( ()=>{
-            localStorage.setItem("userdetails" , JSON.stringify(updateExpData))
+            localStorage.setItem("userdetails" , JSON.stringify({...updateExpData}))
+          
           })
         }
 
@@ -59,8 +68,9 @@ const Experience = () => {
         
    let handleAddMoreDetals = (e) =>{
     e.preventDefault();
-    // alert("add more details")
+    toaster.addToast("Added successfully");
     setInputField([ ...inputField ,{designation :'' , cName : '' ,jCity:'', jCountry:'', sd:'',ed:'' ,desc:''}] )
+  
     }
 
     let handleInputChange = (e,index)=>{
@@ -73,7 +83,8 @@ const Experience = () => {
     const handleRemovedetails = index =>{
     const list = [...inputField];
     list.splice(index,1);
-    setInputField(list)
+    setInputField(list);
+    toaster.addToast("Removed successfully");
     }
 
     return ( 
@@ -125,7 +136,7 @@ const Experience = () => {
                     onChange={e =>{handleInputChange(e,i)}}></textarea>
                 </div>
 
-                  {/* ---------add more button nd collapse */}
+
                     <div class="d-flex justify-content-around">
                         {
                             inputField.length !==1 &&
@@ -142,15 +153,12 @@ const Experience = () => {
             )
                 })
 }
-            <div class="d-flex justify-content-between" id="options">     
+            <div class="d-flex justify-content-around" id="options">     
                 <Link to='/education' ><button type="button" class="btn btn-outline-info">BACK</button> </Link> 
                 <Link to='/cvTemplate'><button type="button" class="btn btn-success"> Review Resume</button> </Link>
             </div>
         </div>
       
-        {/* <div className="view-resume">
-            <Link to='/cvTemplate'> View Resume</Link>
-        </div> */}
         </div>
      );
 }

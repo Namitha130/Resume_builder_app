@@ -1,6 +1,6 @@
-import { useRef } from "react";
-import { Link,useNavigate } from "react-router-dom";
-
+import { useRef  } from "react";
+import { Link } from "react-router-dom";
+import ToasterUi from 'toaster-ui';
 const Heading = () => {
     let firstname = useRef();
     let lastname = useRef();
@@ -13,8 +13,9 @@ const Heading = () => {
     let zipcode= useRef();
     let profileSummury = useRef();
 
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
     
+    let toaster = new ToasterUi();
     let  handleHeadings  = (e) =>{
         e.preventDefault()
         
@@ -30,13 +31,15 @@ const Heading = () => {
             ZipCode:zipcode.current.value,
             ProfileSummary:profileSummury.current.value,
             experiences : [],
-            education : [],
-            hobbies : []
+            education : []
+           
        }
        console.log(newUserDetails);       
        localStorage.setItem("userdetails",JSON.stringify(newUserDetails));
-       navigate("/education");
+       toaster.addToast("Details added successfully")
+       //    navigate("/education");
     }
+
     return ( 
     <div className="heading-page">
         <h3>What is the best approach for employers to get <br/>in touch with you?</h3>
@@ -110,7 +113,11 @@ const Heading = () => {
                     <label for="professionalSummary" className="form-label"> Professional Summary</label>
                         <textarea className="form-control" id="professionalSummary" rows="4" ref={profileSummury}></textarea>
                 </div>
-            
+                {/* <div className="mb-3">
+                    <label for="skills" className="form-label"> Professional Summary</label>
+                        <textarea className="form-control" id="professionalSummary" rows="4" ref={profileSummury}></textarea>
+                </div> */}
+                 
                 <div class="d-inline-flex p-2">
                 <button type="submit" class="btn btn-primary mb-3">Save</button>
                 </div>
@@ -118,8 +125,9 @@ const Heading = () => {
             </form>
             <div class="d-flex justify-content-between" id="options">
                 <Link to='/' ><button type="button" class="btn btn-outline-info">BACK</button> </Link> 
-                <Link to='/education'><button type="button" class="btn btn-warning">NEXT : Education details</button> </Link>
+                <Link to='/skills'><button type="button" class="btn btn-warning">NEXT : Skills</button> </Link>
             </div>
+
         </div>
        
         {/* <div className="view-resume">

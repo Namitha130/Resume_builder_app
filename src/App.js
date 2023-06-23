@@ -6,6 +6,7 @@ import Heading from './resume_components/Heading';
 import ResumeTemplate from './resume_components/ResumeTemplate';
 import Education from './resume_components/Education';
 import Experience from './resume_components/Experience';
+import Skills from './resume_components/Skills';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path='/cvTemplate' element={<ResumeTemplate/>}/>
             <Route path='/education' element={<Education/>}/>
             <Route path='/experience' element={<Experience/>}/>
+            <Route path='/skills' element={<Skills/>}/>
         </Routes>
      </div>
     </BrowserRouter>

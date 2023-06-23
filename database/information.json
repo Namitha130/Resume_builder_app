@@ -33,9 +33,61 @@
           "eduCity": "EDUCITY",
           "eduCountry": "EDUCOUNTRY",
           "otherActivities": "OTHERS"
-        },
-        {}
+        }
       ]
+    }
+  ],
+  "skills": [
+    { 
+      "skill": "HTML"
+    },
+    {
+    
+      "skill": "CSS"
+    },
+    {
+     
+      "skill": "JAVA"
+    },
+    {
+      "skill": "Java Script"
+    },
+    {
+      "skill": "React-JS"
+    },
+    {
+      "skill": "Node-Js"
+    },
+    {
+      "skill": "Python"
+    },
+    {
+      "skill": "PHP"
+    },
+    {
+      "skill": "MySQL"
+    },
+    {
+      "skill": "MongoDB"
+    },
+    {
+      "skill": "Express-JS"
+    },
+    {
+      
+      "skill": "Angular 2+"
+    },
+    {
+   
+      "skill" : "cloud-AWS" 
+    } ,
+    { 
+     
+      "skill" : "Git/Github"
+    },
+    {
+      
+      "skill": "selenium testing"
     }
   ]
 }

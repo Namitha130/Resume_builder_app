@@ -1,6 +1,6 @@
 import { useEffect, useRef,useState } from "react";
-import { Link, useParams } from "react-router-dom";
-
+import { Link} from "react-router-dom";
+import ToasterUi from 'toaster-ui';
 const Education = () => {
     let institute = useRef();
     let degree = useRef();
@@ -13,7 +13,7 @@ const Education = () => {
    let [userDetails ,setUserDetails] = useState({});
    let [inputField , setInputField] = useState([{institue :'' , degree : '' ,city:'', country:'', sd:'',ed:'',activity:''}])
 
-
+   const toaster = new ToasterUi();
    useEffect( ()=>{
     fetch("http://localhost:1000/information")
     .then((res) =>{
@@ -24,12 +24,14 @@ const Education = () => {
     })
     let data = JSON.parse(localStorage.getItem("userdetails"))
     setUserDetails(data)
-   },[])
 
+   },[])
+   
    let handleAddEducation = (e)=>{
         e.preventDefault();
-        alert("add education details")
+        toaster.addToast("Qualification details added successfully");
         let eduDetails = {
+
             institute :institute.current.value,
             degree : degree.current.value,
             startYear : startYear.current.value,
@@ -38,7 +40,11 @@ const Education = () => {
             eduCountry :eduCountry.current.value,
             otherActivities :otherActivities.current.value
         }
-        console.log(eduDetails);
+        // console.log(eduDetails);
+        let data = JSON.parse(localStorage.getItem("userdetails"))
+        console.log(data.education);
+        let educationArr = data.education;
+        educationArr.push(eduDetails)
 
         let updateEduData = {
             ...userDetails,education : [...userDetails.education,eduDetails]
@@ -50,7 +56,7 @@ const Education = () => {
         }
         fetch("http://localhost:1000/information/" + userDetails,config)
         .then(()=>{
-            localStorage.setItem("userdetails" ,JSON.stringify(updateEduData))
+            localStorage.setItem("userdetails" ,JSON.stringify({...updateEduData}))
         })       
             }
 
@@ -60,7 +66,8 @@ const Education = () => {
             e.preventDefault();
             // alert("add more details")
             setInputField([ ...inputField ,{institue :'' , degree : '' ,city:'', country:'', sd:'',ed:'',activity:''}] )
-    }
+            toaster.addToast("Added successfully");
+        }
 
     let handlInputChange = (e,index)=>{
         const {name, value} = e.target;
@@ -73,6 +80,7 @@ const handleRemovedetails = index =>{
     const list = [...inputField];
     list.splice(index,1);
     setInputField(list)
+    toaster.addToast("Removed successfully");
 }
 
     return ( 
@@ -82,7 +90,7 @@ const handleRemovedetails = index =>{
             <div className="edu-info">
                 { inputField.map( (x,i)=>{
                     return (
-                    <form className="row g-3" onSubmit={handleAddEducation}>
+                    <form className="row g-3" onSubmit={handleAddEducation} >
                     
                     <div className="col-md-6">
                         <label for="inputInstitute" className="form-label"> Institute</label>
@@ -144,7 +152,7 @@ const handleRemovedetails = index =>{
 }
                 
                 <div class="d-flex justify-content-between" id="options">
-                    <Link to='/heading' ><button type="button" class="btn btn-outline-info">BACK</button> </Link> 
+                    <Link to='/skills' ><button type="button" class="btn btn-outline-info">BACK</button> </Link> 
                     <Link to='/experience'><button type="button" class="btn btn-warning"> NEXT : Work history</button> </Link>
                 </div>
             </div>

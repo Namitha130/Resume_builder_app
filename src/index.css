@@ -47,6 +47,30 @@ nav hr{
  border: 1px solid grey;
  width: 100vw;
 }
+.suggestion{
+  width: 250px;
+  height: auto;
+  position: absolute;
+  top: 80px;
+  left: 470px;
+  background-color: rgba(240, 234, 234, 0.934);
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+
+}
+.suggestion ul{
+  list-style: none;
+}
+.suggestion ul li{
+  padding: 5px;
+  background-color: transparent;
+}
+
+.suggestion ul li:hover{
+  background-color: rgba(177, 177, 208, 0.589);
+  cursor: pointer;
+}
  /* ----------------------------Home page CSS------------------------*/
 #home-page 
 {
@@ -85,8 +109,8 @@ nav hr{
   height: 500px;
 }
 
-/* --------------------- heading pafge css --------------------*/
-.heading-page, .exp-page ,.edu-page{
+/* --------------------- input field pages: css --------------------*/
+.heading-page, .exp-page ,.edu-page,.skills-page{
   width: 60%;
   height: auto;
   margin: 30px auto;
@@ -94,19 +118,24 @@ nav hr{
   
 }
 
-.heading-page h3, .exp-page h3 , .edu-page h3{
+.heading-page h3, .exp-page h3 , .edu-page h3 ,.skills-page h3{
   text-align: left;
   font-weight: lighter;
   margin-bottom: 40px;
 
 }
-.heading-info ,.exp-info , .edu-info {
+.heading-info ,.exp-info , .edu-info,.skills-info{
   width: 90%;
   margin: 10px auto;
   text-align: left;
   
 }
 
+.skills-info input,.skills-info textarea{
+    width: 80%;
+    margin: 0px 70px;
+    
+}
 form
 { 
   padding:10px;
@@ -137,4 +166,39 @@ form
   background-color: rgba(11, 228, 26, 0.879);
   
 }
+
+/* ---------------------Resume template---------- */
+
+.app{
+  width: 100vw;
+  height: 100vw;
+  
+}
+ .resume-wrapper{
+  width: 65%;
+  height: auto;
+  margin: 20px auto;
+  
+ }
+ #outlet{
+  width: 90%;
+  height: auto;
+ }
  
+ .body-header{
+    text-align: center;
+ }
+ #summary, #skills,.exp-body ,.edu-body{
+    text-align: justify;
+
+ }
+ 
+#resume-border{
+  width: 80%;
+  height: auto;
+
+} 
+.resume-wrapper hr{
+    border: 2px solid rgba(0, 0, 0, 0.984);
+    width: 100%;
+  }

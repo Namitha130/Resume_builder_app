@@ -7,7 +7,7 @@ const Home = () => {
                 <p class="fs-1">Zetz. The Best CV <br/>Maker Online.</p>
                 <p class="fw-normal">If a sheet of paper represents your entire work life, personality, and skills, 
                     it better be a pretty amazing piece of paper—
-                    Let Zety do the heavy lifting.</p>
+                    Let Zetz do the heavy lifting.</p>
                 <Link to="/heading" id="create"> <button type="button" class="btn btn-success">Create your CV now </button> </Link>   
                 
             </div>

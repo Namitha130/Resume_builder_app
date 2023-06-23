@@ -47,29 +47,32 @@ nav hr{
  border: 1px solid grey;
  width: 100vw;
 }
-.suggestion{
+#suggestion{
   width: 250px;
   height: auto;
   position: absolute;
-  top: 80px;
-  left: 470px;
+  top: 270px;
+  left: 480px;
   background-color: rgba(240, 234, 234, 0.934);
   color: black;
   font-size: 20px;
   padding: 10px;
 
 }
-.suggestion ul{
+#suggestion ul{
   list-style: none;
 }
-.suggestion ul li{
+#suggestion ul li{
   padding: 5px;
   background-color: transparent;
 }
 
-.suggestion ul li:hover{
+#suggestion ul li:hover{
   background-color: rgba(177, 177, 208, 0.589);
   cursor: pointer;
+}
+#info{
+  margin: 40px 0px ;
 }
  /* ----------------------------Home page CSS------------------------*/
 #home-page 

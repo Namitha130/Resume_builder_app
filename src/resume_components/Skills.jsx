@@ -1,13 +1,13 @@
 // import '../styles/Skills.css'
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef,useState } from "react";
 import { Link } from "react-router-dom";
+
 const Skills = () => {
 
-    let [searchword, setSearchword] = useState("");
+    let [searchword, setSearchword] = useState("html");
     let [skills , setSkills] = useState([]);
-
-
-   let skillsSetBox = useRef();
+  
+   let textArea = useRef();
 
     useEffect(()=>{
         fetch("http://localhost:1000/skills")
@@ -15,47 +15,44 @@ const Skills = () => {
             return res.json()
         })
         .then((data) =>{
-            console.log(data);
 
-            // let names = data.map((m)=>{return {moviename: m.moviename ,id : m.id}});
-            // let filteredNames = names.filter( (movie)=>{return movie.moviename.toLowerCase().includes(searchword.toLowerCase())})
-            
-            let names = data.map((m)=>{return m.skill});
-            let filteredNames = names.filter( (name)=>{
-                return name.toLowerCase().includes(searchword.toLowerCase())
-            })
-            setSkills(filteredNames);
-        
-            
-        })
-       
-    },[searchword])
+              let s = data.map((name)=>{ return name.skill})
+                // console.log(s);
+                let sp = s.filter((v,i,a)=>{ return (!a.includes(v , i+1))})
+                setSkills(sp)
+                // s.filter((v,i,a)=>{ return })
+              localStorage.setItem("skillSet" , JSON.stringify(data))
+        })   
+    },[])
+    const textAreaLimit = () =>{
+        if( textArea.current.value.length >= 50)
+        {
+            alert(" Your have reached limitations of characters")            
+        }      
+    }
     return ( 
         <div className="skills-page">
             <h3> Tell us about your Personal developements skills</h3>
-            {skills &&
-                   <h1> {skills.skill}</h1>
-
-            }
+           
             <div className="skills-info">
                 <form >
                     <label for="exampleFormControlTextarea1" class="form-label">
                             Add Skills</label>
                     <input class="form-control me-2" type="search" placeholder="type skills"
-                     aria-label="Search" value={searchword} onChange={(e) =>{ searchword(e.target.value);}}/>
+                     aria-label="Search" value={searchword} onChange={(e) =>{ searchword(e.target.value)}}/>
                    
-                    {/* <div class="mb-3" id="info">
+                    <div class="mb-3" id="info">
                         <textarea class="form-control" id="textArea" 
-                            rows="2" maxLength={6} ref={skillsSetBox} ></textarea>
-                    </div> */}
+                            rows="2" maxLength={50} ref={textArea} onChange={textAreaLimit} ></textarea>
+                    </div>
                        
-                    {   searchword != "" &&
-                    <div className="suggestion">
+                    {   searchword !== "" &&
+                    <div id="suggestion">
                         <ul>
                             {
                                 skills.map((sk)=>{ 
-                                    return (      
-                                            <li>{sk.skill}</li>
+                                    return ( 
+                                        <li>{sk.skill}</li>
                                         )
                                         })
                             }

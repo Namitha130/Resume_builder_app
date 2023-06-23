@@ -12,8 +12,6 @@ const ResumeTemplate = () => {
 		<div className="resume-wrapper">
 			{/* <h1>Resume template</h1> */}
 			<div class="shadow p-3 mb-5 bg-body-tertiary rounded" id="outlet">
-				
-
 				{
 					userDetails && 
 					<div className="resume-header">

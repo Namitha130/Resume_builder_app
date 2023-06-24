@@ -1,69 +1,75 @@
-// import '../styles/Skills.css'
-import { useEffect, useRef,useState } from "react";
+
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import {AutoComplete} from "antd"
 
 const Skills = () => {
+    const [skill, setSkill] = useState([]);
+let [onSelect , setOnSelect]= useState("");
+//    let textArea = useRef();
 
-    let [searchword, setSearchword] = useState("html");
-    let [skills , setSkills] = useState([]);
-  
-   let textArea = useRef();
+   const options = [
+    {label : "HTML",value:"HTML"},
+    {label :"CSS",value:"CSS"},
+    {label :"JavaScript", value:"JavaScript"},
+    {label :"ReactJS", value:"React-JS"},
+    {label :"Node.js", value:"Node.js"},
+    {label :"Python", value:"Python"},
+    {label :"PHP", value:"PHP"},
+    {label :"C++", value:"C++"},
+    {label :"MySql", value:"MySql"},
+    {label :"MongoDB", value:"MongoDB"},
+    {label :"Hibernate", value:"Hibernate"},
+    {label :"JAVA", value:"Java"},
+    {label :"Springs", value:"Springs"},
+    {label :"Springs-boot", value:"Springs-Boot"},
+    {label :"UX-design", value:"UX-Design"},
+    {label :"UI/UX designing", value:"UI/UX Design"}
 
-    useEffect(()=>{
-        fetch("http://localhost:1000/skills")
-        .then((res)=>{
-            return res.json()
-        })
-        .then((data) =>{
+  ]
 
-              let s = data.map((name)=>{ return name.skill})
-                // console.log(s);
-                let sp = s.filter((v,i,a)=>{ return (!a.includes(v , i+1))})
-                setSkills(sp)
-                // s.filter((v,i,a)=>{ return })
-              localStorage.setItem("skillSet" , JSON.stringify(data))
-        })   
-    },[])
-    const textAreaLimit = () =>{
-        if( textArea.current.value.length >= 50)
-        {
-            alert(" Your have reached limitations of characters")            
-        }      
-    }
+    // const textAreaLimit = () =>{
+    //     if( textArea.current.value.length >= 50)
+    //     {
+    //         alert(" Your have reached limitations of characters")            
+    //     }      
+    // }
+
+
+
+
+const addNewSkill = () => {
+  const copyCart = [...skill];
+  copyCart.push(onSelect);
+  setSkill(copyCart);
+  setOnSelect("");
+};
     return ( 
         <div className="skills-page">
             <h3> Tell us about your Personal developements skills</h3>
            
             <div className="skills-info">
-                <form >
-                    <label for="exampleFormControlTextarea1" class="form-label">
-                            Add Skills</label>
-                    <input class="form-control me-2" type="search" placeholder="type skills"
-                     aria-label="Search" value={searchword} onChange={(e) =>{ searchword(e.target.value)}}/>
-                   
-                    <div class="mb-3" id="info">
-                        <textarea class="form-control" id="textArea" 
-                            rows="2" maxLength={50} ref={textArea} onChange={textAreaLimit} ></textarea>
-                    </div>
-                       
-                    {   searchword !== "" &&
-                    <div id="suggestion">
-                        <ul>
-                            {
-                                skills.map((sk)=>{ 
-                                    return ( 
-                                        <li>{sk.skill}</li>
-                                        )
-                                        })
-                            }
-                        </ul>
-
-                    </div>
-                } 
+            <form >
+                <label for="exampleFormControlTextarea1" class="form-label"> Add Skills</label>
+                    <AutoComplete style={{width: "500px"}} placeholder="Add skills here" options={options}
+                        onSelect={ (value)=>{ console.log("selected value " + value);
+                        setOnSelect(value);}}  />
+                    <button onClick={addNewSkill}>Add </button>
+                    <ul>
+                    {
+                    skill.map((val,i) => {
+                         return <p> {val}</p>;
+                                                })
+                    } 
+                    </ul>
                     
-                    <div class="col-auto">
+                {/* <div class="mb-3" id="info">
+                    <textarea class="form-control" id="textArea" 
+                        rows="2" maxLength={50} ref={textArea} onChange={textAreaLimit} ></textarea>
+                </div> */}
+                    {/* <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3">Save</button>
-                    </div>
+                    </div> */}
                     
                 </form>
 

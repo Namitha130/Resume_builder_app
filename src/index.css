@@ -133,11 +133,21 @@ nav hr{
   text-align: left;
   
 }
+.skills-info{
+  border: 1px grey solid;
+  height: 350px;
+  padding: 50px  30px;
+}
 
-.skills-info input,.skills-info textarea{
-    width: 80%;
-    margin: 0px 70px;
-    
+.skills-info button{
+  position: relative;
+  left: -10px;
+
+
+}
+.list{
+  margin-top: 20px;
+  
 }
 form
 { 
@@ -172,35 +182,35 @@ form
 
 /* ---------------------Resume template---------- */
 
-.app{
+.resume-app{
   width: 100vw;
   height: 100vw;
   
 }
- .resume-wrapper{
+.resume-app h3{
+  color: rgb(4, 4, 168);
+}
+ #resume-wrapper{
   width: 65%;
   height: auto;
-  margin: 20px auto;
-  
- }
- #outlet{
+  margin: 40px auto 0px auto;
+ 
+
+}
+ #introduction{
   width: 90%;
   height: auto;
+  padding-top: 20px;
+  text-align: center;
  }
  
- .body-header{
-    text-align: center;
- }
- #summary, #skills,.exp-body ,.edu-body{
-    text-align: justify;
-
- }
  
-#resume-border{
-  width: 80%;
-  height: auto;
 
-} 
+ #profile-info,#proExp-info,#proEdu-body{
+  padding: 0px 20px;
+  text-align: justify;
+ }
+
 .resume-wrapper hr{
     border: 2px solid rgba(0, 0, 0, 0.984);
     width: 100%;

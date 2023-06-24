@@ -13,8 +13,12 @@ const Heading = () => {
     let zipcode= useRef();
     let profileSummury = useRef();
 
-    // let navigate = useNavigate();
-    
+    const textAreaLimit = () =>{
+    if( profileSummury.current.value.length >= 50)
+    {
+        alert(" Your have reached limitations of characters")            
+    }      
+    }
     let toaster = new ToasterUi();
     let  handleHeadings  = (e) =>{
         e.preventDefault()
@@ -111,13 +115,10 @@ const Heading = () => {
                 </div>
                 <div className="mb-3">
                     <label for="professionalSummary" className="form-label"> Professional Summary</label>
-                        <textarea className="form-control" id="professionalSummary" rows="4" ref={profileSummury}></textarea>
+                        <textarea className="form-control" id="professionalSummary" rows="4" 
+                        ref={profileSummury} maxLength={150} onChange={textAreaLimit}></textarea>
                 </div>
-                {/* <div className="mb-3">
-                    <label for="skills" className="form-label"> Professional Summary</label>
-                        <textarea className="form-control" id="professionalSummary" rows="4" ref={profileSummury}></textarea>
-                </div> */}
-                 
+              
                 <div class="d-inline-flex p-2">
                 <button type="submit" class="btn btn-primary mb-3">Save</button>
                 </div>
@@ -125,7 +126,7 @@ const Heading = () => {
             </form>
             <div class="d-flex justify-content-between" id="options">
                 <Link to='/' ><button type="button" class="btn btn-outline-info">BACK</button> </Link> 
-                <Link to='/skills'><button type="button" class="btn btn-warning">NEXT : Skills</button> </Link>
+                <Link to='/addSkills'><button type="button" class="btn btn-warning">NEXT : Skills</button> </Link>
             </div>
 
         </div>

@@ -90,6 +90,7 @@ const handleRemovedetails = index =>{
             <div className="edu-info">
                 { inputField.map( (x,i)=>{
                     return (
+                        
                     <form className="row g-3" onSubmit={handleAddEducation} >
                     
                     <div className="col-md-6">
@@ -130,37 +131,29 @@ const handleRemovedetails = index =>{
  
                         {/* ---------add more button nd collapse */}
                         <div class="d-flex justify-content-center">
-
                             {
                                 inputField.length !==1 &&
                                 <button type="button" class="btn btn-outline-danger" onClick={()=>handleRemovedetails(i)}>remove</button>
                             }
                             { inputField.length-1 === i &&
                                 <button type="button" class="btn btn-outline-dark" onClick={handleAddMoreDetals}>Add </button>
-                            }
-                            
-                            
+                            }                        
                         </div>
-                        
-                    <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3">Save</button>
-                    </div>
- 
-                </form>
+
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Save</button>
+                        </div>
+                    </form>
+                    
                  )
                 })
 }
                 
                 <div class="d-flex justify-content-between" id="options">
-                    <Link to='/skills' ><button type="button" class="btn btn-outline-info">BACK</button> </Link> 
+                    <Link to='/addSkills' ><button type="button" class="btn btn-outline-info">BACK</button> </Link> 
                     <Link to='/experience'><button type="button" class="btn btn-warning"> NEXT : Work history</button> </Link>
                 </div>
             </div>
-
-            
-            {/* <div className="view-resume">
-                <Link to='/cvTemplate'> View Resume</Link>
-            </div> */}
         </div>
      );
 }

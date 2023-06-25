@@ -14,7 +14,7 @@ const Heading = () => {
     let profileSummury = useRef();
 
     const textAreaLimit = () =>{
-    if( profileSummury.current.value.length >= 50)
+    if( profileSummury.current.value.length > 250)
     {
         alert(" Your have reached limitations of characters")            
     }      
@@ -116,7 +116,7 @@ const Heading = () => {
                 <div className="mb-3">
                     <label for="professionalSummary" className="form-label"> Professional Summary</label>
                         <textarea className="form-control" id="professionalSummary" rows="4" 
-                        ref={profileSummury} maxLength={150} onChange={textAreaLimit}></textarea>
+                        ref={profileSummury} maxLength={250} onChange={textAreaLimit}></textarea>
                 </div>
               
                 <div class="d-inline-flex p-2">

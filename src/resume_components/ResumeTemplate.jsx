@@ -39,7 +39,7 @@ const ResumeTemplate = () => {
 						<h3>SKILLS</h3> 
 							{skills.map((v,i)=>{
 								return(
-									<ul>
+									<ul style={{display : "grid" , gridTemplateColumns:"repeat(auto-fill , minmax(10px,0fr"}}>
 										<li> {v}</li>
 									</ul>
 								)

@@ -6,6 +6,10 @@ const Navbar = () => {
             <Link to='/'> <h1> zetp</h1><i class='bx bxs-zap'></i></Link> 
           
             </div>
+            <div id="logo" class="container-fluid" >
+            <Link to='/date'> <h3> Date</h3></Link> 
+          
+            </div>
             
         </nav>
      );

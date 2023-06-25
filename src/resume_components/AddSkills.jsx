@@ -71,7 +71,7 @@ let save = (e)=>{
             {             
             skill.map((val,i) => {
                 return(
-                    <div className="list" >
+                    <div className="grid-container" >
                         <span key= {i}> {val}</span>
                     </div>
                 ) 

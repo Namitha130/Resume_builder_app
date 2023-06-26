@@ -138,15 +138,9 @@ nav hr{
   height: auto;
   padding: 50px  30px;
 }
-
 .skills-info button{
   position: relative;
   left: -10px;
-
-
-}
-.grid-container{
-  margin-top: 20px;
 }
 form
 { 
@@ -202,7 +196,12 @@ form
   padding-top: 20px;
   text-align: center;
  }
- 
+
+ #display-lists {
+  display : grid;
+   grid-template-columns : 250px 250px;
+   padding-left: 60px;
+ }
  
 
  #profile-info,#proExp-info,#proEdu-body{

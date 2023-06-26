@@ -64,7 +64,18 @@ const Experience = () => {
           })
         }
 
-        // add more education details
+    //! start and end end validation
+
+        let handleDateChange =(e) =>{
+            const selected = new Date(e.target.value);
+            const maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() + 1);
+            if (selected > maxDate) {
+            alert(" Invalid date");
+            } 
+        }
+
+    //! add more education details
         
    let handleAddMoreDetals = (e) =>{
     e.preventDefault();
@@ -79,7 +90,8 @@ const Experience = () => {
     list[index][name] = value;
     setInputField(list)
     }
-    //remove education details
+    //! remove education details
+    
     const handleRemovedetails = index =>{
     const list = [...inputField];
     list.splice(index,1);
@@ -119,13 +131,13 @@ const Experience = () => {
                 <div className="col-md-6">
                     <label for="inputStartDate" className="form-label">Start Date</label>
                     <input type="date" className="form-control" id="inputStartDate" aria-label="start date"
-                     ref={jobStart} required name="sd"
+                     ref={jobStart} required name="sd" onChangeCapture={handleDateChange}
                     onChange={e =>{handleInputChange(e,i)}}/>
                 </div>
                 <div className="col-md-6">
                     <label for="inputEndDate" className="form-label">End Date</label>
                     <input type="date" className="form-control" id="inputEndDate" aria-label="end date"
-                     ref={jobEnd} required name="ed"
+                     ref={jobEnd} required name="ed"  onChangeCapture={handleDateChange}
                     onChange={e =>{handleInputChange(e,i)}}/>
                 </div>
 

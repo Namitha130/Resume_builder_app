@@ -30,22 +30,24 @@ const ResumeTemplate = () => {
 			}
 			<hr/>
 			{
-				userDetails && 
-				<div style={{textAlign: "justify"}} id="profile-info">
+			userDetails && 
+			<div style={{textAlign: "justify"}} id="profile-info">
 			
-						<h3>PROFESSIONAL SUMMARY</h3>
-						<p>{userDetails.ProfileSummary}</p>
+				<h3>PROFESSIONAL SUMMARY</h3>
+				<p>{userDetails.ProfileSummary}</p>
 
-						<h3>SKILLS</h3> 
-							{skills.map((v,i)=>{
-								return(
-									<ul style={{display : "grid" , gridTemplateColumns:"repeat(auto-fill , minmax(10px,0fr"}}>
-										<li> {v}</li>
-									</ul>
-								)
-							})} 
-						
-				</div>
+				<h3>SKILLS</h3> 
+				<ul id="display-lists">
+					{
+						skills.map((v,i) =>{
+							return(
+								<li> {v}</li>
+							)
+						})
+					}
+					
+				</ul>
+			</div>
 			}		
 			
 			{userDetails &&

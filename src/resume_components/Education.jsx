@@ -59,14 +59,25 @@ const Education = () => {
             localStorage.setItem("userdetails" ,JSON.stringify({...updateEduData}))
         })       
             }
+    
+    //! start and end end validation
 
-   // add more education details
+    let handleDateChange =(e) =>{
+        const selected = new Date(e.target.value);
+        const maxDate = new Date();
+        maxDate.setDate(maxDate.getDate() + 1);
+        if (selected > maxDate) {
+        alert(" Invalid date");
+        } 
+    }      
+
+   //! add more education details
         
-   let handleAddMoreDetals = (e) =>{
-            e.preventDefault();
-            // alert("add more details")
-            setInputField([ ...inputField ,{institue :'' , degree : '' ,city:'', country:'', sd:'',ed:'',activity:''}] )
-            toaster.addToast("Added successfully");
+    let handleAddMoreDetals = (e) =>{
+        e.preventDefault();
+        // alert("add more details")
+        setInputField([ ...inputField ,{institue :'' , degree : '' ,city:'', country:'', sd:'',ed:'',activity:''}] )
+        toaster.addToast("Added successfully");
         }
 
     let handlInputChange = (e,index)=>{
@@ -75,13 +86,15 @@ const Education = () => {
         list[index][name] = value;
         setInputField(list)
     }
-//remove education details
-const handleRemovedetails = index =>{
-    const list = [...inputField];
-    list.splice(index,1);
-    setInputField(list)
-    toaster.addToast("Removed successfully");
-}
+
+    //! remove education details
+
+    const handleRemovedetails = index =>{
+        const list = [...inputField];
+        list.splice(index,1);
+        setInputField(list)
+        toaster.addToast("Removed successfully");
+    }
 
     return ( 
         <div className="edu-page">
@@ -116,12 +129,14 @@ const handleRemovedetails = index =>{
                     <div className="col-md-6">
                         <label for="inputStartDate" className="form-label"> Start Date </label>
                         <input type="date" className="form-control" id="inputStartDate" aria-label="start date" 
-                        ref={startYear} required name="sd" onChange={e =>handlInputChange(e,i)}/>
+                        ref={startYear} required name="sd" onChange={e =>handlInputChange(e,i)}
+                        onChangeCapture={handleDateChange}/>
                     </div>
                     <div className="col-md-6">
                         <label for="inputEndDate" className="form-label"> End Date</label>
                         <input type="date" className="form-control" id="inputEndDate" aria-label="end date" 
-                        ref={endYear} required name="ed" onChange={e =>handlInputChange(e,i)}/>
+                        ref={endYear} required name="ed" onChange={e =>handlInputChange(e,i)}
+                        onChangeCapture={handleDateChange}/>
                     </div>
                     <div className="mb-3">
                         <label for="otherActivities" className="form-label"> Other Activities</label>

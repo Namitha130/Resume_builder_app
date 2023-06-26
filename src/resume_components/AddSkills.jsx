@@ -8,7 +8,7 @@ function AddSkills() {
     const [skill, setSkill] = useState([]);
     let [onSelect , setOnSelect]= useState("")
    let navigate = useNavigate()
-  
+
 
   const options = [
     {label : "HTML",value:"HTML"},
@@ -45,6 +45,8 @@ let save = (e)=>{
     e.preventDefault();
     const skillList =  localStorage.setItem("skillList" , JSON.stringify(skill))
     console.log(skillList);
+    
+
 }
   return (
     <div className="skills-page">
@@ -68,15 +70,16 @@ let save = (e)=>{
               <button type="button" class="btn btn-primary"onClick={addNewSkill}>
                  Add </button>
         </div> 
-            {             
-            skill.map((val,i) => {
-                return(
-                    <div className="grid-container" >
-                        <span key= {i}> {val}</span>
-                    </div>
-                ) 
-            })
-            }
+
+            <div style={ {border : "1px solid transparent" , marginTop : "10px" , padding: "30px"}}>
+                  { skill.map( (val,i) =>{
+                    return(
+                      <span> {val + " , "}</span>
+                    )  
+                  })
+                  }
+            </div>
+            
           
 
         </div>
